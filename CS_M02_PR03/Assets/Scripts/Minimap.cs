@@ -6,6 +6,9 @@ public class Minimap : MonoBehaviour
 {
     public Transform player;
     public GameObject minimap;
+
+    private bool rotate = false;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
@@ -16,15 +19,34 @@ public class Minimap : MonoBehaviour
         {
             minimap.SetActive(false);
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (rotate)
+            {
+                rotate = false;
+            }
+            else
+            {
+                rotate = true;
+            }
+        }
     }
 
     private void LateUpdate()
     {
         Vector3 newPosition = player.position;
-        newPosition.y = player.position.y + 5;
+        newPosition.y = player.position.y + 7;
         transform.position = newPosition;
 
         // Rotate with player code
-        // transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
+
+        if (rotate)
+        {
+            transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(90f, 180f, 0f);
+        }
     }
 }
