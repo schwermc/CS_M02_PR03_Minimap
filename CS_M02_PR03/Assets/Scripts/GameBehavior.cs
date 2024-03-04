@@ -152,8 +152,8 @@ public class GameBehavior : MonoBehaviour, IManager
 
     void OnGUI()
     {
-        GUI.Box(new Rect(20, 20, 150, 25), "Player Health: " + _playerHP);
-        GUI.Box(new Rect(20, 50, 150, 25), "Items Collected: " + _itemsCollected);
+        GUI.Box(new Rect(20, 20, Screen.width / 4 - 100, 25), "Player Health: " + _playerHP);
+        GUI.Box(new Rect(20, 50, Screen.width / 4 - 100, 25), "Items Collected: " + _itemsCollected);
         GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), labelText);
 
         if (showWinScreen)
@@ -187,7 +187,8 @@ public class GameBehavior : MonoBehaviour, IManager
 
         if (followerText)
         {
-            GUI.Box(new Rect(Screen.width - 170, 20, 150, 25), "You have " + _followerCount + " followers!");
+            GUI.Box(new Rect(20, 80, Screen.width / 4 - 100, 25), "You have " + _followerCount + " followers!");
+            // x y, width height
         }
 
         if (speedLable)
